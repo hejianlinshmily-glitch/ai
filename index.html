@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>2026湾区AI学习总结｜完整深度版</title>
+<title>2026湾区AI学习总结｜完整深度版 V2（内容常显修正版）</title>
 <style>
 :root{--bg:#07101c;--bg2:#0b1627;--panel:#0f2035;--text:#edf5ff;--muted:#9eb0c7;--line:rgba(255,255,255,.085);--blue:#59a7ff;--cyan:#49d8ff;--gold:#ffc160;--green:#79dfb6;--red:#ff8c8c;--shadow:0 18px 48px rgba(0,0,0,.24);--radius:22px;--max:1260px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -19,7 +19,7 @@ a{color:inherit;text-decoration:none}.progress{position:fixed;top:0;left:0;right
 .sources{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.src{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}.src b{display:block;color:var(--cyan);font-size:12px;margin-bottom:7px}.src p{margin:0;color:var(--muted);font-size:12px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.028)}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:11px;color:#a9c9ee;background:rgba(89,167,255,.055)}td{font-size:13px;color:#cbd8e8}
 .asset3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.asset{padding:24px;border-radius:20px;border:1px solid var(--line)}.asset:nth-child(1){background:rgba(89,167,255,.07)}.asset:nth-child(2){background:rgba(73,216,255,.055)}.asset:nth-child(3){background:rgba(255,193,96,.06)}.asset h4{margin:4px 0 8px}.asset ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.matrix .m{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.matrix .m strong{display:block;margin:6px 0}.matrix .m p{margin:0;color:var(--muted);font-size:13px}
 .callout{margin-top:20px;border-left:3px solid var(--gold);padding:15px 17px;background:rgba(255,193,96,.07);border-radius:0 13px 13px 0;color:#dfe9f6;font-size:13px}.audit{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.good,.caution{padding:22px;border-radius:20px;border:1px solid var(--line)}.good{background:rgba(121,223,182,.065)}.caution{background:rgba(255,140,140,.05)}.good ul,.caution ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
-.refs{display:grid;gap:10px}.ref{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:12px;color:#aebed0}.footer{padding:48px 0 70px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(10,24,42,.92);color:white;display:grid;place-items:center;cursor:pointer}.fade{opacity:0;transform:translateY(16px);transition:.55s ease}.fade.show{opacity:1;transform:none}
+.refs{display:grid;gap:10px}.ref{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:12px;color:#aebed0}.footer{padding:48px 0 70px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(10,24,42,.92);color:white;display:grid;place-items:center;cursor:pointer}.fade{opacity:1;transform:none;transition:.25s ease}.fade:hover{transform:translateY(-2px)}
 @media(max-width:1020px){.hero-grid,.section-head{grid-template-columns:1fr}.grid-4,.matrix,.sources{grid-template-columns:repeat(2,1fr)}.grid-3,.asset3{grid-template-columns:1fr}.timeline,.stair{grid-template-columns:repeat(2,1fr)}.nav-tag{display:none}}
 @media(max-width:700px){.container{padding:0 18px}.nav-inner{padding:10px 12px}.brand{font-size:13px}.hero{padding-top:126px}.hero p{font-size:16px}.grid-2,.grid-4,.matrix,.timeline,.stair,.sources,.audit{grid-template-columns:1fr}.section{padding:62px 0}.quote{font-size:20px}}
 </style>
@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none}.progress{position:fixed;top:0;left:0;right
 const bar=document.getElementById('bar'),links=[...document.querySelectorAll('#nav a')],sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 function sync(){const d=document.documentElement,max=d.scrollHeight-innerHeight;bar.style.width=(max?scrollY/max*100:0)+'%';let cur=sections[0]?.id;sections.forEach(s=>{if(s.getBoundingClientRect().top<=120)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))}
 addEventListener('scroll',sync,{passive:true});sync();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.1});document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
 </script>
 </body>
 </html>
