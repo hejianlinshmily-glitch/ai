@@ -2,442 +2,71 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2026 湾区 AI 学习总结｜AI 驱动电商与企业数字化实战</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026湾区AI学习总结｜完整深度版</title>
 <style>
-:root{
-  --bg:#07111f;
-  --bg2:#0b1627;
-  --panel:#0f2036;
-  --panel2:#122741;
-  --text:#ecf4ff;
-  --muted:#9cb0c9;
-  --line:rgba(255,255,255,.09);
-  --blue:#57a6ff;
-  --cyan:#46d7ff;
-  --gold:#ffbd5a;
-  --green:#7ae0b6;
-  --shadow:0 18px 50px rgba(0,0,0,.28);
-  --radius:22px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Inter,"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
-  background:
-    radial-gradient(circle at 10% -10%, rgba(87,166,255,.18), transparent 32%),
-    radial-gradient(circle at 95% 5%, rgba(255,189,90,.10), transparent 26%),
-    linear-gradient(180deg,var(--bg),#081522 60%,#07101b);
-  color:var(--text);
-  line-height:1.7;
-}
-a{color:inherit;text-decoration:none}
-.top-progress{
-  position:fixed;top:0;left:0;width:100%;height:3px;z-index:9999;
-  background:rgba(255,255,255,.04)
-}
-.top-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold))}
-.nav{
-  position:fixed;top:3px;left:0;right:0;z-index:999;
-  backdrop-filter:blur(18px);
-  background:rgba(7,17,31,.82);
-  border-bottom:1px solid var(--line)
-}
-.nav-inner{max-width:1480px;margin:auto;display:flex;align-items:center;gap:22px;padding:14px 28px}
-.brand{font-weight:800;letter-spacing:.02em;white-space:nowrap}
-.brand small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.12em}
-.nav-links{display:flex;gap:8px;flex:1;overflow:auto;scrollbar-width:none}
-.nav-links::-webkit-scrollbar{display:none}
-.nav-links a{
-  color:var(--muted);padding:8px 11px;border-radius:999px;font-size:13px;white-space:nowrap;
-  transition:.2s ease
-}
-.nav-links a:hover,.nav-links a.active{color:white;background:rgba(87,166,255,.12);box-shadow:inset 0 0 0 1px rgba(87,166,255,.18)}
-.nav-meta{font-size:12px;color:var(--muted);white-space:nowrap}
-.container{max-width:1220px;margin:auto;padding:0 28px}
-.hero{padding:155px 0 84px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end}
-.kicker{color:var(--cyan);font-size:12px;letter-spacing:.22em;font-weight:800;text-transform:uppercase}
-h1{font-size:clamp(42px,6vw,78px);line-height:1.08;margin:12px 0 20px;letter-spacing:-.04em}
-.hero p{max-width:820px;color:var(--muted);font-size:18px}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
-  background:rgba(255,255,255,.05);border:1px solid var(--line);color:#d9e8fb;font-size:13px;margin-top:18px
-}
-.hero-side{display:grid;gap:14px}
-.metric{
-  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
-  border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)
-}
-.metric strong{display:block;font-size:28px;letter-spacing:-.03em}
-.metric span{color:var(--muted);font-size:13px}
-.section{padding:82px 0;border-top:1px solid rgba(255,255,255,.045);scroll-margin-top:86px}
-.section-head{display:grid;grid-template-columns:220px 1fr;gap:26px;margin-bottom:34px}
-.eyebrow{font-size:12px;color:var(--cyan);font-weight:800;letter-spacing:.18em}
-.section h2{margin:4px 0 8px;font-size:clamp(30px,4vw,48px);letter-spacing:-.035em;line-height:1.15}
-.section-intro{color:var(--muted);max-width:820px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.card{
-  background:linear-gradient(180deg,rgba(17,39,65,.88),rgba(11,28,48,.82));
-  border:1px solid var(--line);border-radius:var(--radius);padding:24px;
-  box-shadow:0 10px 36px rgba(0,0,0,.16)
-}
-.card h3{margin:4px 0 8px;font-size:19px}
-.card p{margin:0;color:var(--muted);font-size:14px}
-.label{display:inline-flex;padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em;background:rgba(87,166,255,.11);color:#8fc4ff}
-.label.gold{background:rgba(255,189,90,.11);color:#ffd28a}
-.label.green{background:rgba(122,224,182,.11);color:#9ceacb}
-.big-quote{
-  margin:28px 0 0;padding:28px 32px;border-radius:24px;
-  background:linear-gradient(135deg,rgba(87,166,255,.13),rgba(70,215,255,.06));
-  border:1px solid rgba(87,166,255,.2);font-size:24px;font-weight:750;line-height:1.45
-}
-.formula{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:center;margin-top:30px
-}
-.formula .node{
-  text-align:center;padding:18px 10px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid var(--line);
-  font-weight:700;font-size:14px
-}
-.formula .arrow{text-align:center;color:var(--blue);font-size:22px}
-.pyramid{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px}
-.pyramid div{
-  height:52px;display:flex;align-items:center;justify-content:center;border-radius:14px;
-  background:linear-gradient(90deg,rgba(87,166,255,.14),rgba(70,215,255,.08));border:1px solid rgba(87,166,255,.15)
-}
-.pyramid .p1{width:30%}.pyramid .p2{width:42%}.pyramid .p3{width:56%}.pyramid .p4{width:72%}.pyramid .p5{width:90%}
-.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:28px}
-.step{position:relative;padding:22px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
-.step b{display:block;color:var(--gold);font-size:12px;letter-spacing:.12em;margin-bottom:7px}
-.step strong{display:block;font-size:16px;margin-bottom:8px}
-.step p{color:var(--muted);font-size:13px;margin:0}
-.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.compare{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.035)}
-.compare table{width:100%;border-collapse:collapse}
-.compare th,.compare td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left}
-.compare th{font-size:12px;color:#a8c8ec;background:rgba(87,166,255,.06)}
-.compare td{font-size:14px}.compare td:last-child{color:#dceafd}
-.flow-wide{
-  display:flex;gap:10px;align-items:stretch;overflow:auto;padding-bottom:6px;margin-top:26px
-}
-.flow-wide .box{min-width:150px;flex:1;padding:18px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:14px;font-weight:700}
-.flow-wide .arr{display:flex;align-items:center;color:var(--blue);font-size:22px}
-.notice{
-  border-left:3px solid var(--gold);padding:16px 18px;background:rgba(255,189,90,.07);
-  color:#e7edf5;border-radius:0 14px 14px 0;margin-top:24px;font-size:14px
-}
-.maturity{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}
-.level{padding:20px 14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
-.level small{display:block;color:var(--cyan);font-weight:800}.level strong{display:block;margin:7px 0}.level p{margin:0;color:var(--muted);font-size:12px}
-.priority{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-.quad{padding:20px;border-radius:20px;border:1px solid var(--line);min-height:170px}
-.quad h4{margin:0 0 8px}.quad ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
-.q1{background:rgba(122,224,182,.07)}.q2{background:rgba(87,166,255,.07)}.q3{background:rgba(255,189,90,.06)}.q4{background:rgba(255,255,255,.03)}
-.sources{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
-.source-card{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
-.source-card b{display:block;font-size:13px;color:var(--cyan);margin-bottom:7px}.source-card p{font-size:13px;color:var(--muted);margin:0}
-.footer{padding:50px 0 70px;color:var(--muted);font-size:13px;text-align:center;border-top:1px solid var(--line)}
-.backtop{
-  position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
-  background:rgba(10,24,42,.9);color:white;display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow)
-}
-.fade{opacity:0;transform:translateY(18px);transition:.6s ease}
-.fade.show{opacity:1;transform:none}
-@media(max-width:1000px){
-  .hero-grid,.section-head,.dual{grid-template-columns:1fr}
-  .grid-4,.sources{grid-template-columns:repeat(2,1fr)}
-  .grid-3{grid-template-columns:1fr 1fr}
-  .formula{grid-template-columns:1fr}.formula .arrow{transform:rotate(90deg)}
-  .timeline,.maturity{grid-template-columns:1fr 1fr}
-  .nav-meta{display:none}
-}
-@media(max-width:680px){
-  .container{padding:0 18px}.nav-inner{padding:11px 14px}.brand{font-size:13px}
-  .hero{padding-top:130px}.hero p{font-size:16px}
-  .grid-3,.grid-4,.timeline,.maturity,.priority,.sources{grid-template-columns:1fr}
-  .section{padding:62px 0}.section-head{gap:8px}.big-quote{font-size:20px}
-}
+:root{--bg:#07101c;--bg2:#0b1627;--panel:#0f2035;--text:#edf5ff;--muted:#9eb0c7;--line:rgba(255,255,255,.085);--blue:#59a7ff;--cyan:#49d8ff;--gold:#ffc160;--green:#79dfb6;--red:#ff8c8c;--shadow:0 18px 48px rgba(0,0,0,.24);--radius:22px;--max:1260px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.72;background:radial-gradient(circle at 12% -8%,rgba(89,167,255,.19),transparent 30%),radial-gradient(circle at 88% 2%,rgba(255,193,96,.10),transparent 26%),linear-gradient(180deg,#07111e 0%,#091624 55%,#07101b 100%)}
+a{color:inherit;text-decoration:none}.progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.04);z-index:9999}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold))}
+.nav{position:fixed;top:3px;left:0;right:0;z-index:999;backdrop-filter:blur(18px);background:rgba(7,16,28,.86);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1500px;margin:auto;padding:12px 24px;display:flex;align-items:center;gap:18px}.brand{font-weight:900;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.15em;font-weight:700}.nav-scroll{display:flex;gap:7px;overflow:auto;scrollbar-width:none;flex:1}.nav-scroll::-webkit-scrollbar{display:none}.nav-scroll a{white-space:nowrap;color:var(--muted);font-size:12px;padding:7px 10px;border-radius:999px}.nav-scroll a:hover,.nav-scroll a.active{color:white;background:rgba(89,167,255,.12);box-shadow:inset 0 0 0 1px rgba(89,167,255,.18)}.nav-tag{font-size:11px;color:var(--muted);white-space:nowrap}
+.container{max-width:var(--max);margin:auto;padding:0 28px}.hero{padding:150px 0 88px;position:relative}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:end}.kicker{color:var(--cyan);font-size:12px;letter-spacing:.22em;font-weight:900;text-transform:uppercase}h1{font-size:clamp(44px,6.2vw,82px);line-height:1.07;margin:12px 0 18px;letter-spacing:-.045em}.hero p{font-size:18px;color:var(--muted);max-width:830px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.045);padding:9px 13px;border-radius:999px;color:#d9e8fb;font-size:12px}.hero-side{display:grid;gap:13px}.metric{padding:20px 22px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));box-shadow:var(--shadow)}.metric b{display:block;font-size:27px}.metric span{color:var(--muted);font-size:12px}
+.section{padding:80px 0;border-top:1px solid rgba(255,255,255,.045);scroll-margin-top:82px}.section-head{display:grid;grid-template-columns:230px 1fr;gap:26px;margin-bottom:34px}.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--cyan);font-weight:900}h2{font-size:clamp(31px,4.2vw,50px);line-height:1.14;letter-spacing:-.035em;margin:4px 0 6px}.section-intro{color:var(--muted);max-width:860px}.subhead{margin:42px 0 18px}.subhead h3{margin:0 0 6px;font-size:24px}.subhead p{margin:0;color:var(--muted);font-size:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:linear-gradient(180deg,rgba(18,40,67,.90),rgba(11,28,48,.84));border:1px solid var(--line);border-radius:var(--radius);padding:23px;box-shadow:0 10px 30px rgba(0,0,0,.14)}.card h4{font-size:18px;margin:5px 0 8px}.card p{margin:0;color:var(--muted);font-size:14px}.card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}.tag{display:inline-flex;font-size:10px;font-weight:900;letter-spacing:.1em;padding:6px 8px;border-radius:999px;background:rgba(89,167,255,.12);color:#9ac9ff}.tag.gold{background:rgba(255,193,96,.12);color:#ffd38e}.tag.green{background:rgba(121,223,182,.11);color:#9feacf}.tag.red{background:rgba(255,140,140,.11);color:#ffb4b4}
+.quote{margin-top:26px;padding:26px 30px;border-radius:22px;background:linear-gradient(135deg,rgba(89,167,255,.13),rgba(73,216,255,.055));border:1px solid rgba(89,167,255,.20);font-size:23px;font-weight:760;line-height:1.48}.flow{display:flex;align-items:stretch;gap:10px;overflow:auto;padding-bottom:6px;margin-top:22px}.flow .node{min-width:150px;flex:1;padding:17px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line);font-weight:750;font-size:13px}.flow .arr{display:flex;align-items:center;color:var(--blue);font-size:22px}.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:21px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}.step b{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;margin-bottom:6px}.step strong{display:block;margin-bottom:7px}.step p{font-size:13px;color:var(--muted);margin:0}
+.stair{display:grid;grid-template-columns:repeat(4,1fr);align-items:end;gap:14px}.stair .s{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:18px 18px 4px 4px;padding:20px}.stair .s:nth-child(1){min-height:160px}.stair .s:nth-child(2){min-height:205px}.stair .s:nth-child(3){min-height:250px}.stair .s:nth-child(4){min-height:295px}.stair small{color:var(--cyan);font-weight:900}.stair strong{display:block;margin:6px 0}.stair p{color:var(--muted);font-size:13px;margin:0}
+.sources{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.src{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035)}.src b{display:block;color:var(--cyan);font-size:12px;margin-bottom:7px}.src p{margin:0;color:var(--muted);font-size:12px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.028)}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:11px;color:#a9c9ee;background:rgba(89,167,255,.055)}td{font-size:13px;color:#cbd8e8}
+.asset3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.asset{padding:24px;border-radius:20px;border:1px solid var(--line)}.asset:nth-child(1){background:rgba(89,167,255,.07)}.asset:nth-child(2){background:rgba(73,216,255,.055)}.asset:nth-child(3){background:rgba(255,193,96,.06)}.asset h4{margin:4px 0 8px}.asset ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.matrix .m{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.matrix .m strong{display:block;margin:6px 0}.matrix .m p{margin:0;color:var(--muted);font-size:13px}
+.callout{margin-top:20px;border-left:3px solid var(--gold);padding:15px 17px;background:rgba(255,193,96,.07);border-radius:0 13px 13px 0;color:#dfe9f6;font-size:13px}.audit{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.good,.caution{padding:22px;border-radius:20px;border:1px solid var(--line)}.good{background:rgba(121,223,182,.065)}.caution{background:rgba(255,140,140,.05)}.good ul,.caution ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.refs{display:grid;gap:10px}.ref{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:12px;color:#aebed0}.footer{padding:48px 0 70px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(10,24,42,.92);color:white;display:grid;place-items:center;cursor:pointer}.fade{opacity:0;transform:translateY(16px);transition:.55s ease}.fade.show{opacity:1;transform:none}
+@media(max-width:1020px){.hero-grid,.section-head{grid-template-columns:1fr}.grid-4,.matrix,.sources{grid-template-columns:repeat(2,1fr)}.grid-3,.asset3{grid-template-columns:1fr}.timeline,.stair{grid-template-columns:repeat(2,1fr)}.nav-tag{display:none}}
+@media(max-width:700px){.container{padding:0 18px}.nav-inner{padding:10px 12px}.brand{font-size:13px}.hero{padding-top:126px}.hero p{font-size:16px}.grid-2,.grid-4,.matrix,.timeline,.stair,.sources,.audit{grid-template-columns:1fr}.section{padding:62px 0}.quote{font-size:20px}}
 </style>
 </head>
 <body>
-<div class="top-progress"><span id="progressBar"></span></div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <div class="brand">湾区 AI 学习总结<small>2026 · INTERNAL STUDY NOTE</small></div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#overview">首页</a>
-      <a href="#sources">资料总览</a>
-      <a href="#core">核心方法论</a>
-      <a href="#data">数据资产</a>
-      <a href="#agent">Agent体系</a>
-      <a href="#1688">1688实战</a>
-      <a href="#content">内容生产</a>
-      <a href="#geo">GEO获客</a>
-      <a href="#management">管理自动化</a>
-      <a href="#action">落地行动</a>
-    </nav>
-    <div class="nav-meta">数据 · SOP · Agent · 自动化</div>
-  </div>
-</header>
+<div class="progress"><span id="bar"></span></div>
+<header class="nav"><div class="nav-inner"><div class="brand">2026湾区AI学习总结<small>COMPLETE DEEP-DIVE EDITION</small></div><nav class="nav-scroll" id="nav">
+<a href="#overview">总览</a><a href="#sources">资料地图</a><a href="#core">方法论</a><a href="#structure">结构化</a><a href="#agent">Agent</a><a href="#business">商业模式</a><a href="#customer">全球获客</a><a href="#1688">1688实战</a><a href="#content">内容生产</a><a href="#geo">GEO</a><a href="#sales">销售管理</a><a href="#brand">品牌出海</a><a href="#action">落地行动</a><a href="#refs">资料索引</a>
+</nav><div class="nav-tag">数据 · SOP · Agent · 自动化 · GEO</div></div></header>
 
 <main>
-<section class="hero" id="overview">
-  <div class="container hero-grid">
-    <div>
-      <div class="kicker">AI × E-commerce × Enterprise Automation</div>
-      <h1>从“会用 AI”<br>到“让 AI 工作”</h1>
-      <p>基于 4 份学习资料整理：把 AI 从单点生成工具，升级为由数据、SOP、智能体、内容资产和自动化共同构成的业务系统。</p>
-      <div class="hero-badge">本页为学习归纳，不对讲师案例中的经营指标做独立验证</div>
-    </div>
-    <div class="hero-side">
-      <div class="metric"><strong>数据 × 大模型 × SOP</strong><span>AI 能力的底层公式</span></div>
-      <div class="metric"><strong>Agent + Plugin + Skill</strong><span>智能体落地的基础结构</span></div>
-      <div class="metric"><strong>个人提效 → 组织能力</strong><span>从工具使用走向企业级复用</span></div>
-    </div>
-  </div>
-</section>
+<section class="hero" id="overview"><div class="container hero-grid"><div><div class="kicker">AI × 1688 × GEO × Enterprise Automation</div><h1>从“会用 AI”<br>到“让 AI 成为系统”</h1><p>基于 4 份湾区 AI 学习资料重新整理的完整深度版。不是按课程顺序摘抄，而是把课程中的方法论、智能体、1688、电商内容生产、全球客户开发、GEO、销售质检、企业管理和品牌出海重新串成一套业务逻辑。</p><div class="hero-meta"><span class="pill">4 份资料整合</span><span class="pill">13 个主题章节</span><span class="pill">来源与观点分开</span><span class="pill">讲师案例不做外部独立背书</span></div></div><div class="hero-side"><div class="metric"><b>数据 × 大模型 × SOP</b><span>AI 能力的核心公式</span></div><div class="metric"><b>Agent + Plugin + Skill</b><span>数字员工的基础结构</span></div><div class="metric"><b>流量 → 资产 → 信任</b><span>GEO 与品牌出海的关键变化</span></div><div class="metric"><b>个人提效 → 组织复用</b><span>企业 AI 的最终落点</span></div></div></div></section>
 
-<section class="section" id="sources">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">00 / SOURCES</div><h2>四份资料，一条主线</h2></div>
-    <div class="section-intro">四份资料各有侧重，但共同指向：先把业务事实和数据结构化，再用 SOP 与智能体复制方法，最后通过自动化形成持续闭环。</div>
-  </div>
-  <div class="sources fade">
-    <div class="source-card"><b>资料 A</b><p>AI 生图、飞书无人办公、销售与售后自动化。核心词：数据 × 大模型 × SOP。</p></div>
-    <div class="source-card"><b>资料 B</b><p>海外获客、GEO、全域信源与品牌资产。核心词：实体资产、内容资产、信任资产。</p></div>
-    <div class="source-card"><b>资料 C</b><p>智能体结构化笔记。核心词：Agent、插件、Skill、自动任务、A-F 文件夹。</p></div>
-    <div class="source-card"><b>资料 D</b><p>AccioWork / 1688 深度应用。核心词：竞品分析、选品、主图优化、业务质检。</p></div>
-  </div>
-  <div class="big-quote fade">真正有价值的，不是“多会几个 AI 工具”，而是把企业已有的数据、经验和流程，变成可以重复执行、持续优化的能力。</div>
-</div>
-</section>
+<section class="section" id="sources"><div class="container"><div class="section-head"><div><div class="eyebrow">00 / SOURCE MAP</div><h2>资料地图</h2></div><div class="section-intro">四份资料内容跨度很大，但并非彼此独立。资料 A 讲企业数字化闭环，资料 B 讲 GEO 与品牌信源，资料 C 是智能体结构化笔记，资料 D 聚焦 AccioWork 与 1688 落地。</div></div><div class="sources fade"><div class="src"><b>资料 A｜企业数字化实操</b><p>数据×模型×SOP、全球潜客、图片视频、售后、销售、多智能体。</p></div><div class="src"><b>资料 B｜GEO 与品牌</b><p>流量入口迁移、三类资产、全域信源、30天闭环、本地化、合规、品牌案例。</p></div><div class="src"><b>资料 C｜随堂笔记</b><p>结构化、Agent、插件、Skill、MCP、自动任务、A-F 文件夹、1688 竞品分析。</p></div><div class="src"><b>资料 D｜AccioWork / 1688</b><p>AI四阶段、竞品分析、选品、新品、主图优化、聊天质检、销售智能体。</p></div></div><div class="quote fade">四份资料真正共同讨论的是：如何把“个人经验”拆成“结构化数据 + SOP + 工具 + 智能体”，再让这些能力被反复调用。</div></div></section>
 
-<section class="section" id="core">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">01 / CORE</div><h2>AI 核心方法论</h2></div>
-    <div class="section-intro">资料将 AI 能力拆成三个基础变量：数据是原料，大模型是处理引擎，SOP 决定输出过程。结构化，是把三者接起来的关键。</div>
-  </div>
-  <div class="grid-3 fade">
-    <div class="card"><span class="label">DATA</span><h3>数据</h3><p>聊天记录、订单、产品参数、客户需求、售后、竞品与案例，决定 AI 能“看见”什么。</p></div>
-    <div class="card"><span class="label gold">MODEL</span><h3>大模型</h3><p>负责理解、归纳、分析、生成与推理，但前提是输入事实足够清晰。</p></div>
-    <div class="card"><span class="label green">SOP</span><h3>标准流程</h3><p>将高手经验拆成可执行步骤，减少“凭感觉”和一次性输出。</p></div>
-  </div>
-  <div class="formula fade">
-    <div class="node">杂乱信息</div><div class="arrow">→</div><div class="node">结构化</div><div class="arrow">→</div><div class="node">SOP</div><div class="arrow">→</div><div class="node">稳定执行</div>
-  </div>
-  <div class="notice fade">结构化的本质：把“帮我做一下”拆成目标、输入、限制、步骤、判断标准与输出格式。</div>
-</div>
-</section>
+<section class="section" id="core"><div class="container"><div class="section-head"><div><div class="eyebrow">01 / CORE</div><h2>AI 核心方法论</h2></div><div class="section-intro">资料 A 明确提出“AI能力 = 数据 × 大模型 × SOP”。资料 D 又把 AI 应用拆成从搜索问答到企业级协作的四个阶段。两者合起来，构成整个课程体系的底层框架。</div></div><div class="grid-3 fade"><div class="card"><span class="tag">DATA</span><h4>数据</h4><p>聊天记录、订单、产品资料、竞品、售后、案例、客户需求等，是 AI 能理解业务的事实基础。</p></div><div class="card"><span class="tag gold">MODEL</span><h4>大模型</h4><p>负责理解、分析、生成、归纳和推理，但模型不会自动补齐企业内部真实数据。</p></div><div class="card"><span class="tag green">SOP</span><h4>标准作业程序</h4><p>把业务高手“脑子里的做法”变成可执行步骤，让输出可复制、可审核、可迭代。</p></div></div><div class="subhead"><h3>AI 应用的四个阶段</h3><p>资料 D 的核心演进模型。</p></div><div class="stair fade"><div class="s"><small>1.0</small><strong>高级搜索引擎</strong><p>文字问答、搜索、复制粘贴，AI 仍然只是个人工具。</p></div><div class="s"><small>2.0</small><strong>辅助内容生产</strong><p>PDF、Excel、图片、PPT 自动生成，但一致性不稳定。</p></div><div class="s"><small>3.0</small><strong>智能体 / Agent</strong><p>把固定流程、判断标准和岗位方法封装为结构化提示词或 Skill。</p></div><div class="s"><small>4.0</small><strong>企业级协作</strong><p>多个员工共享同一套智能体、数据和流程，逐步形成“AI 自动上班”。</p></div></div><div class="callout fade">关键转变不是“模型更聪明”，而是“企业开始把经验、数据和流程变成可调用资产”。</div></div></section>
 
-<section class="section" id="data">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">02 / DATA</div><h2>数据资产：AI 的底座</h2></div>
-    <div class="section-intro">四份资料里，真正贯穿始终的不是“某一个模型”，而是数据。只有被整理、验证、结构化的数据，才能被智能体稳定复用。</div>
-  </div>
-  <div class="pyramid fade">
-    <div class="p1">自动化</div>
-    <div class="p2">智能体</div>
-    <div class="p3">SOP</div>
-    <div class="p4">结构化数据</div>
-    <div class="p5">产品 / 客户 / 订单 / 竞品 / 聊天 / 案例 / 售后 / 内容</div>
-  </div>
-  <div class="grid-4 fade" style="margin-top:26px">
-    <div class="card"><h3>产品事实</h3><p>参数、MOQ、价格、交期、认证、工艺、库存。</p></div>
-    <div class="card"><h3>客户事实</h3><p>需求、问题、聊天记录、成交与未成交原因。</p></div>
-    <div class="card"><h3>市场事实</h3><p>竞品价格带、销量、爆款、关键词与行业趋势。</p></div>
-    <div class="card"><h3>组织事实</h3><p>SOP、响应时效、售后问题、责任与绩效数据。</p></div>
-  </div>
-</div>
-</section>
+<section class="section" id="structure"><div class="container"><div class="section-head"><div><div class="eyebrow">02 / STRUCTURE</div><h2>结构化：把模糊需求变成可执行任务</h2></div><div class="section-intro">资料 C 明确强调：AI 更喜欢结构化语言。结构化不是写得更长，而是把目标、输入、规则、流程和输出拆清楚。</div></div><div class="grid-2 fade"><div class="card"><span class="tag red">模糊表达</span><h4>“帮我分析一下这个产品”</h4><ul><li>目标不清楚</li><li>没有输入范围</li><li>没有判断标准</li><li>没有输出格式</li></ul></div><div class="card"><span class="tag green">结构化表达</span><h4>拆成 6 个要素</h4><ul><li>目的：解决什么问题</li><li>数据：AI 可以看哪些资料</li><li>步骤：按什么顺序处理</li><li>限制：哪些不能做</li><li>标准：怎样才算完成</li><li>输出：表格、HTML、图片还是报告</li></ul></div></div><div class="subhead"><h3>允许 AI 反问</h3><p>资料 C / D 都提到：当任务定义不清楚时，让 AI 先提问，而不是直接输出。</p></div><div class="flow fade"><div class="node">先说目标</div><div class="arr">→</div><div class="node">AI 反问</div><div class="arr">→</div><div class="node">补足约束</div><div class="arr">→</div><div class="node">确认方向</div><div class="arr">→</div><div class="node">再生成结果</div></div></div></section>
 
-<section class="section" id="agent">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">03 / AGENT</div><h2>从问答工具到数字员工</h2></div>
-    <div class="section-intro">Agent 是岗位，Plugin / MCP 是工具接口，Skill 是做事的方法，Automation 是让任务按时间或条件持续执行。</div>
-  </div>
-  <div class="grid-4 fade">
-    <div class="card"><span class="label">AGENT</span><h3>数字员工</h3><p>负责一个清晰岗位：竞品分析师、主图优化师、客服质检员、销售助手。</p></div>
-    <div class="card"><span class="label">PLUGIN</span><h3>工具接口</h3><p>让智能体调用地图、企业信息、1688、ERP、CRM 等外部系统。</p></div>
-    <div class="card"><span class="label">SKILL</span><h3>工作方法</h3><p>告诉智能体“如何使用工具”“按什么步骤做”“什么结果才算完成”。</p></div>
-    <div class="card"><span class="label">AUTO</span><h3>自动任务</h3><p>按每天、每周、固定时段或触发条件运行，减少重复手工操作。</p></div>
-  </div>
-  <div class="maturity fade">
-    <div class="level"><small>L1</small><strong>会问 AI</strong><p>问答、搜索、简单生成</p></div>
-    <div class="level"><small>L2</small><strong>会做内容</strong><p>PDF、Excel、图片、PPT</p></div>
-    <div class="level"><small>L3</small><strong>有固定 SOP</strong><p>方法开始可复制</p></div>
-    <div class="level"><small>L4</small><strong>Agent / Skill</strong><p>岗位能力被封装</p></div>
-    <div class="level"><small>L5</small><strong>系统自动流转</strong><p>数据、任务、反馈闭环</p></div>
-  </div>
-</div>
-</section>
+<section class="section" id="agent"><div class="container"><div class="section-head"><div><div class="eyebrow">03 / AGENT</div><h2>Agent、Plugin、Skill 与自动任务</h2></div><div class="section-intro">课程把“智能体”类比为数字员工：Agent 是岗位，Plugin / MCP 是工具通道，Skill 是工作方法，Automation 是让任务自动发生。</div></div><div class="grid-4 fade"><div class="card"><span class="tag">AGENT</span><h4>岗位 / 数字员工</h4><p>如竞品分析师、主图优化师、销售助手、售后分析员。</p></div><div class="card"><span class="tag">PLUGIN / MCP</span><h4>工具 / 通道</h4><p>让 AI 连接地图、企业信息、1688、ERP、CRM 等外部系统。</p></div><div class="card"><span class="tag green">SKILL</span><h4>工作方法</h4><p>告诉 Agent 如何使用工具、按什么步骤处理、什么结果才合格。</p></div><div class="card"><span class="tag gold">AUTOMATION</span><h4>自动执行</h4><p>按固定时间或触发条件运行，减少重复手工任务。</p></div></div><div class="subhead"><h3>多智能体团队</h3><p>资料 A 提到由“领导智能体”负责拆任务，下属智能体分别执行。</p></div><div class="flow fade"><div class="node">领导 Agent<br><span style="color:var(--muted);font-weight:500">规划 / 分配 / 监控</span></div><div class="arr">→</div><div class="node">销售 Agent</div><div class="node">采购 Agent</div><div class="node">仓库 Agent</div><div class="node">售后 Agent</div></div><div class="subhead"><h3>A-F 文件夹：可复用的新产品工作流</h3></div><div class="flow fade"><div class="node"><b>A</b><br>行业热销款</div><div class="arr">→</div><div class="node"><b>B</b><br>公司畅销 / 常规款</div><div class="arr">→</div><div class="node"><b>C</b><br>材料 / 工艺 / 价格</div><div class="arr">→</div><div class="node"><b>D</b><br>生成新品设计</div><div class="arr">→</div><div class="node"><b>E</b><br>主图详情生成过程</div><div class="arr">→</div><div class="node"><b>F</b><br>最终输出</div></div></div></section>
 
-<section class="section" id="1688">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">04 / 1688</div><h2>1688 电商实战</h2></div>
-    <div class="section-intro">资料中的高频场景集中在四类：竞品分析、市场选品、新品开发、主图优化。共同特征是“先数据、再判断、再生成”。</div>
-  </div>
-  <div class="grid-4 fade">
-    <div class="card"><h3>竞品分析</h3><p>抓取商品数据 → 分析销量、价格带、爆款与关键词 → 输出可视化报告。</p></div>
-    <div class="card"><h3>市场选品</h3><p>核心流量词 + 增长词 + 蓝海词，结合目标人群与痛点定义新品机会。</p></div>
-    <div class="card"><h3>主图优化</h3><p>“追平均，超优秀”：优先处理低于店铺平均点击率且消耗较高的商品。</p></div>
-    <div class="card"><h3>新品开发</h3><p>行业爆款 + 公司现有款 + 工艺成本知识库 → 新品方案 → 主图详情页。</p></div>
-  </div>
-  <div class="flow-wide fade">
-    <div class="box">A 行业爆款</div><div class="arr">→</div>
-    <div class="box">B 公司畅销款</div><div class="arr">→</div>
-    <div class="box">C 材料 / 工艺 / 价格</div><div class="arr">→</div>
-    <div class="box">D 新产品设计</div><div class="arr">→</div>
-    <div class="box">E 生成过程</div><div class="arr">→</div>
-    <div class="box">F 主图 / 详情页</div>
-  </div>
-</div>
-</section>
+<section class="section" id="business"><div class="container"><div class="section-head"><div><div class="eyebrow">04 / BUSINESS MODEL</div><h2>从传统铺货，到数据驱动与 C2M</h2></div><div class="section-intro">资料 A 用传统线下批发和数据驱动模式做对比，核心是强调：库存、沟通、选品和履约都可以被数据重构。</div></div><div class="grid-2 fade"><div class="card"><span class="tag red">传统痛点</span><h4>高库存 + 强人工依赖</h4><ul><li>铺货带来库存压力</li><li>依赖人工沟通与客情</li><li>出错率高</li><li>决策更多依赖经验</li></ul></div><div class="card"><span class="tag green">资料中的新思路</span><h4>需求数据 + 先验证再生产</h4><ul><li>根据客户需求与反馈确定产品</li><li>降低起订门槛</li><li>强调快速发货</li><li>用产品与服务体验建立复购</li></ul></div></div></div></section>
 
-<section class="section" id="content">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">05 / CONTENT</div><h2>AI 内容生产：从生成到流水线</h2></div>
-    <div class="section-intro">资料反复强调“控制变量”：保留产品主体真实性，只更换背景、场景、角度或光影；视频则拆成分镜后逐步替换。</div>
-  </div>
-  <div class="dual fade">
-    <div class="card">
-      <span class="label gold">IMAGE</span>
-      <h3>图片生产</h3>
-      <p>产品图 + 背景图融合；主体结构保持一致；角度和光影小幅调整；用明确限制项减少细节漂移。</p>
-    </div>
-    <div class="card">
-      <span class="label gold">VIDEO</span>
-      <h3>视频生产</h3>
-      <p>参考视频拆分 → 分镜截图 → 替换产品 / 人物 / 背景 → 再合成，降低一次性生成复杂场景的失败率。</p>
-    </div>
-  </div>
-  <div class="flow-wide fade">
-    <div class="box">产品事实库</div><div class="arr">→</div>
-    <div class="box">统一结构</div><div class="arr">→</div>
-    <div class="box">主图</div><div class="arr">→</div>
-    <div class="box">详情页</div><div class="arr">→</div>
-    <div class="box">视频</div><div class="arr">→</div>
-    <div class="box">官网 / 1688 / 社媒</div>
-  </div>
-</div>
-</section>
+<section class="section" id="customer"><div class="container"><div class="section-head"><div><div class="eyebrow">05 / GLOBAL CUSTOMER</div><h2>AI 驱动的全球客户挖掘</h2></div><div class="section-intro">资料 A 的客户开发部分，不是单纯“搜客户名单”，而是将公域信息抓取、客户分类、评分与联系方式验证串起来。</div></div><div class="timeline fade"><div class="step"><b>STEP 01</b><strong>抓公域信息</strong><p>官网、企业信息、展会、行业目录等。</p></div><div class="step"><b>STEP 02</b><strong>识别企业属性</strong><p>生产商、进口商、品牌方、渠道商。</p></div><div class="step"><b>STEP 03</b><strong>匹配需求</strong><p>主营业务、目标市场与产品适配度。</p></div><div class="step"><b>STEP 04</b><strong>筛选与评分</strong><p>公司属性、付款能力、联系方式真实性。</p></div></div><div class="subhead"><h3>客户筛选逻辑</h3></div><div class="table-wrap fade"><table><thead><tr><th>维度</th><th>课程里的思路</th><th>输出</th></tr></thead><tbody><tr><td><strong>企业属性</strong></td><td>是否属于目标买家类型</td><td>保留 / 排除</td></tr><tr><td><strong>需求匹配</strong></td><td>主营产品、市场、采购方向是否匹配</td><td>高 / 中 / 低匹配</td></tr><tr><td><strong>付款能力</strong></td><td>结合公开信息判断商业规模与履约可能性</td><td>优先级</td></tr><tr><td><strong>联系方式</strong></td><td>验证联系人、官网、邮箱等真实性</td><td>可联系名单</td></tr></tbody></table></div></div></section>
 
-<section class="section" id="geo">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">06 / GEO</div><h2>海外获客：从买流量到建信源</h2></div>
-    <div class="section-intro">GEO 在资料中的核心不是“技巧”，而是让企业真实、可验证的信息更容易被 AI 理解、引用和推荐。</div>
-  </div>
-  <div class="dual fade">
-    <div class="card">
-      <span class="label">传统获客</span>
-      <h3>买流量</h3>
-      <p>广告、平台排名、竞价、比价。优势是直接；局限是停投即下降、规则受平台影响。</p>
-    </div>
-    <div class="card">
-      <span class="label green">资产型获客</span>
-      <h3>建信源</h3>
-      <p>官网、B2B 平台、LinkedIn、YouTube、行业媒体、客户案例、认证与真实评价，长期沉淀实体 / 内容 / 信任资产。</p>
-    </div>
-  </div>
-  <div class="timeline fade">
-    <div class="step"><b>01</b><strong>AI 认识你</strong><p>企业与产品事实被公开、结构化地表达。</p></div>
-    <div class="step"><b>02</b><strong>AI 引用你</strong><p>内容在多个可信渠道出现并互相印证。</p></div>
-    <div class="step"><b>03</b><strong>AI 推荐你</strong><p>进入买家的候选与对比名单。</p></div>
-    <div class="step"><b>04</b><strong>买家找到你</strong><p>从平台、官网或社媒继续验证。</p></div>
-    <div class="step"><b>05</b><strong>建立信任</strong><p>案例、认证、口碑与交付信息支撑决策。</p></div>
-  </div>
-</div>
-</section>
+<section class="section" id="1688"><div class="container"><div class="section-head"><div><div class="eyebrow">06 / 1688 PRACTICE</div><h2>1688：从竞品数据到新品与主图优化</h2></div><div class="section-intro">资料 C / D 的 1688 落地场景最完整：竞品分析、市场选品、新品开发、主图点击率优化，再延伸到聊天质检。</div></div><div class="grid-4 fade"><div class="card"><span class="tag">竞品分析</span><h4>店铺数据结构化</h4><p>抓销量、价格带、爆款趋势、核心关键词与卖点，输出 HTML 可视化报告。</p></div><div class="card"><span class="tag">市场选品</span><h4>流量词 × 增长词 × 蓝海词</h4><p>不是只看热门，而是找增长与细分机会。</p></div><div class="card"><span class="tag">新品开发</span><h4>AI 反问产品定义</h4><p>目标客户、价格、材质、功能先明确，再输出产品设计方案。</p></div><div class="card"><span class="tag">主图优化</span><h4>追平均，超优秀</h4><p>优先优化低于店铺平均点击率且消耗较大的商品。</p></div></div><div class="subhead"><h3>竞品分析流程</h3></div><div class="flow fade"><div class="node">下载竞品数据</div><div class="arr">→</div><div class="node">识别价格带</div><div class="arr">→</div><div class="node">找爆款</div><div class="arr">→</div><div class="node">提取关键词</div><div class="arr">→</div><div class="node">趋势 / 人群 / 卖点</div><div class="arr">→</div><div class="node">HTML 报告</div></div><div class="subhead"><h3>资料 D 的典型新品案例</h3></div><div class="grid-3 fade"><div class="card"><h4>笔记本支架</h4><p>把支架、主动散热、拓展坞等需求组合成新的产品定义。</p></div><div class="card"><h4>补光灯</h4><p>通过热搜词和蓝海词寻找“下巴灯 / 发丝灯”等细分机会。</p></div><div class="card"><h4>智能电动轮椅</h4><p>围绕老年娱乐与使用场景增加平板支架、音响、零重力座椅，并拆 BOM。</p></div></div><div class="subhead"><h3>主图点击率优化</h3></div><div class="flow fade"><div class="node">查看店铺平均 CTR</div><div class="arr">→</div><div class="node">筛低于平均的高消耗链接</div><div class="arr">→</div><div class="node">分析主体 / 光影 / 文案</div><div class="arr">→</div><div class="node">生成多版主图</div><div class="arr">→</div><div class="node">重新测试</div></div></div></section>
 
-<section class="section" id="management">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">07 / MANAGEMENT</div><h2>销售与管理自动化</h2></div>
-    <div class="section-intro">资料中的管理场景集中在聊天记录、售后归因、回复时效、客户待办与多智能体协作。AI 更适合做“持续检查与提示”，而不是替代最终管理责任。</div>
-  </div>
-  <div class="flow-wide fade">
-    <div class="box">聊天记录</div><div class="arr">→</div>
-    <div class="box">AI 提取需求</div><div class="arr">→</div>
-    <div class="box">识别未回复 / 风险</div><div class="arr">→</div>
-    <div class="box">生成待办</div><div class="arr">→</div>
-    <div class="box">评分 / 复盘</div>
-  </div>
-  <div class="dual fade" style="margin-top:24px">
-    <div class="card"><h3>适合 AI 自动化</h3><p>数据整理、初步分析、重复检查、提醒、归档、生成待办、统计响应时效。</p></div>
-    <div class="card"><h3>必须人工负责</h3><p>真实性审核、客户承诺、重大定价、售后责任最终确认、战略取舍与管理决策。</p></div>
-  </div>
-</div>
-</section>
+<section class="section" id="content"><div class="container"><div class="section-head"><div><div class="eyebrow">07 / CONTENT ENGINE</div><h2>AI 内容生产：图片、视频、多模态与多平台</h2></div><div class="section-intro">资料 A / B 都强调：AI 内容生产不是“一次性生成一切”，而是先保证产品事实与主体真实性，再做背景、语言、平台形态和多模态扩展。</div></div><div class="grid-2 fade"><div class="card"><span class="tag gold">图片</span><h4>产品图 + 背景图</h4><ul><li>产品主体尽量保持一致</li><li>只调整背景、场景、角度、光影</li><li>使用明确禁止项控制细节漂移</li><li>小角度变化而非大幅重构</li></ul></div><div class="card"><span class="tag gold">视频</span><h4>先拆分，再替换，再合成</h4><ul><li>参考视频拆成关键分镜</li><li>分别替换产品、人物、背景</li><li>逐镜头校验一致性</li><li>最后重新合成</li></ul></div></div><div class="subhead"><h3>多模态内容覆盖</h3></div><div class="matrix fade"><div class="m"><span class="tag">图文</span><strong>产品 / 场景 / 对比</strong><p>帮助买家快速理解外观、应用与差异。</p></div><div class="m"><span class="tag">视频</span><strong>产品演示 / 工厂实拍</strong><p>增加真实感和信息密度。</p></div><div class="m"><span class="tag">结构化文档</span><strong>参数 / FAQ / 技术说明</strong><p>更利于搜索与 AI 理解。</p></div><div class="m"><span class="tag">案例</span><strong>客户 / 交付 / 认证</strong><p>让内容从自述变成证据。</p></div></div><div class="callout fade">先统一产品事实，再谈规模化内容生产。否则 AI 只是在更快地复制矛盾。</div></div></section>
 
-<section class="section" id="action">
-<div class="container">
-  <div class="section-head">
-    <div><div class="eyebrow">08 / ACTION</div><h2>我的理解与落地思路</h2></div>
-    <div class="section-intro">先从高价值、低复杂度的业务问题入手，再逐步把 SOP、Agent 与自动化串起来。重点不是“一次性全自动”，而是可验证、可复盘、可迭代。</div>
-  </div>
+<section class="section" id="geo"><div class="container"><div class="section-head"><div><div class="eyebrow">08 / GEO</div><h2>GEO：从“搜索排名”到“进入 AI 推荐名单”</h2></div><div class="section-intro">资料 B 的核心叙事是：海外买家的信息入口正在从传统搜索与平台筛选，增加 AI 问答与推荐。因此企业需要建设可以被 AI 理解、引用和验证的信源。</div></div><div class="grid-2 fade"><div class="card"><span class="tag red">买流量</span><h4>短期获得曝光</h4><ul><li>广告停投，流量可能立即下降</li><li>平台规则与排名变化会影响结果</li><li>同平台竞争容易进入价格比较</li></ul></div><div class="card"><span class="tag green">建资产</span><h4>长期积累可信信源</h4><ul><li>企业基础事实</li><li>专业内容</li><li>第三方证据</li><li>多平台持续出现</li></ul></div></div><div class="subhead"><h3>三类资产</h3></div><div class="asset3 fade"><div class="asset"><span class="tag">实体资产</span><h4>“你到底是谁”</h4><ul><li>公司、工厂、产能、设备</li><li>SKU、库存、MOQ</li><li>品牌、注册、认证、市场交付</li></ul></div><div class="asset"><span class="tag">内容资产</span><h4>“AI 如何理解你”</h4><ul><li>产品参数</li><li>应用场景</li><li>FAQ</li><li>竞品对比</li><li>技术文档</li></ul></div><div class="asset"><span class="tag gold">信任资产</span><h4>“AI 与买家为何相信你”</h4><ul><li>媒体 / 行业协会</li><li>专利 / 认证 / 测试</li><li>客户案例 / 评价</li><li>第三方口碑</li></ul></div></div><div class="subhead"><h3>全域信源矩阵</h3></div><div class="grid-4 fade"><div class="card"><h4>官网 / 独立站</h4><p>品牌事实主阵地。</p></div><div class="card"><h4>B2B / 电商平台</h4><p>成交与销售数据基础。</p></div><div class="card"><h4>LinkedIn / YouTube</h4><p>B2B 决策者与产品 / 工厂可视化。</p></div><div class="card"><h4>媒体 / 海关 / 展会</h4><p>形成第三方证据与外部信任。</p></div></div><div class="subhead"><h3>四覆盖</h3></div><div class="matrix fade"><div class="m"><span class="tag">多模态</span><strong>内容形态全</strong><p>图、视频、文档、FAQ。</p></div><div class="m"><span class="tag gold">多维度</span><strong>提问场景全</strong><p>推荐、对比、成交验证、痛点解决。</p></div><div class="m"><span class="tag">多平台</span><strong>发布载体全</strong><p>官网、B2B、LinkedIn、YouTube、媒体。</p></div><div class="m"><span class="tag gold">多人群</span><strong>买家层次全</strong><p>小白、入门、比较、决策。</p></div></div><div class="subhead"><h3>30 天 GEO 执行闭环</h3></div><div class="timeline fade"><div class="step"><b>第 1 周</b><strong>基线诊断</strong><p>用真实买家问题测试主流 AI，记录品牌提及、引用源和竞品。</p></div><div class="step"><b>第 2 周</b><strong>建立内容资产</strong><p>整理产品、认证、案例、FAQ，统一核心数据并形成第一批内容。</p></div><div class="step"><b>第 3 周</b><strong>铺到 AI 与买家眼前</strong><p>官网、LinkedIn、YouTube 等平台发布，并覆盖不同提问场景。</p></div><div class="step"><b>第 4 周</b><strong>补背书 + 复测</strong><p>补行业媒体、客户案例页、问答内容；用同一批问题复测。</p></div></div></div></section>
 
-  <div class="timeline fade">
-    <div class="step"><b>WEEK 1</b><strong>统一数据</strong><p>产品参数、价格、MOQ、认证、案例、竞品与聊天资料。</p></div>
-    <div class="step"><b>WEEK 2</b><strong>建立 SOP</strong><p>竞品分析、主图优化、详情页、客服质检、新品开发。</p></div>
-    <div class="step"><b>WEEK 3</b><strong>Agent 化</strong><p>把稳定 SOP 封装为竞品、主图、产品资料与聊天分析智能体。</p></div>
-    <div class="step"><b>WEEK 4</b><strong>自动化</strong><p>让数据采集、分析、生成、审核与输出逐步串起来。</p></div>
-    <div class="step"><b>REVIEW</b><strong>复测</strong><p>看结果、找瓶颈、更新数据和 SOP，形成长期闭环。</p></div>
-  </div>
+<section class="section" id="sales"><div class="container"><div class="section-head"><div><div class="eyebrow">09 / SALES & MANAGEMENT</div><h2>销售、客服与售后：让过程数据化</h2></div><div class="section-intro">资料 A / D 的管理部分非常具体：聊天记录质检、客户待办、回复时效、售后归因、超级销售智能体，以及多角色协作。</div></div><div class="subhead"><h3>聊天记录质检</h3></div><div class="flow fade"><div class="node">旺旺 / 企业微信聊天</div><div class="arr">→</div><div class="node">AI 读取</div><div class="arr">→</div><div class="node">需求 / 不满点</div><div class="arr">→</div><div class="node">未回复 / 风险</div><div class="arr">→</div><div class="node">待办与评分</div></div><div class="grid-3 fade" style="margin-top:22px"><div class="card"><h4>响应速度</h4><p>统计回复时效，识别拖延或漏跟进。</p></div><div class="card"><h4>专业度</h4><p>判断是否理解需求、回复是否完整。</p></div><div class="card"><h4>转化与风险</h4><p>识别重点客户、承诺未兑现、价格 / 交期卡点。</p></div></div><div class="subhead"><h3>售后自动化</h3></div><div class="grid-2 fade"><div class="card"><span class="tag">订单维度</span><h4>责任到人</h4><p>将配货、对货、售后问题与具体责任人关联，用于复盘与绩效。</p></div><div class="card"><span class="tag gold">产品 / 供应商维度</span><h4>反向评估质量</h4><p>统计某类产品或供应商的售后比例，用真实数据判断质量。</p></div></div><div class="subhead"><h3>超级 AI 销售智能体</h3></div><div class="grid-2 fade"><div class="card"><h4>老员工助理</h4><p>快速检索产品、话术、参数和常见问题。</p></div><div class="card"><h4>新人陪练</h4><p>模拟客户提问、反复训练，不依赖老员工持续陪训。</p></div></div><div class="audit fade" style="margin-top:24px"><div class="good"><h4>适合 AI 自动化</h4><ul><li>数据整理</li><li>初步分析</li><li>重复检查</li><li>提醒与待办</li><li>统计与归档</li></ul></div><div class="caution"><h4>仍应保留人工责任</h4><ul><li>客户承诺</li><li>重大定价</li><li>售后责任最终确认</li><li>真实性审核</li><li>战略与人员管理决策</li></ul></div></div></div></section>
 
-  <div class="priority fade">
-    <div class="quad q1"><h4>优先：高价值 / 低复杂度</h4><ul><li>产品资料结构化</li><li>竞品数据分析</li><li>低 CTR 主图优化</li><li>聊天记录质检</li></ul></div>
-    <div class="quad q2"><h4>第二阶段：高价值 / 中复杂度</h4><ul><li>销售智能体</li><li>新品开发工作流</li><li>GEO 内容矩阵</li><li>内容批量分发</li></ul></div>
-    <div class="quad q3"><h4>后续：高价值 / 高复杂度</h4><ul><li>ERP / CRM / 1688 数据联动</li><li>多智能体协作</li><li>跨部门自动任务</li></ul></div>
-    <div class="quad q4"><h4>谨慎：低价值 / 高复杂度</h4><ul><li>为了自动化而自动化</li><li>未经验证的大规模流程重构</li><li>完全取消人工审核</li></ul></div>
-  </div>
+<section class="section" id="brand"><div class="container"><div class="section-head"><div><div class="eyebrow">10 / GLOBAL BRAND</div><h2>品牌出海：不是把中文翻成英文</h2></div><div class="section-intro">资料 B 的后半段从 GEO 延伸到品牌：本地化、合规、第三方证据、持续内容与品牌记忆，都是买家信任的一部分。</div></div><div class="grid-3 fade"><div class="card"><span class="tag">本地化</span><h4>不是直译</h4><p>币种、计量单位、案例、表达方式都应适配目标市场。</p></div><div class="card"><span class="tag gold">合规</span><h4>隐形门槛</h4><p>CE、ISO、UL、GDPR 等信息需要被清楚表达。</p></div><div class="card"><span class="tag green">第三方信任</span><h4>让别人证明你</h4><p>媒体、客户、行业协会、认证与真实案例，比单纯官网自述更有说服力。</p></div></div><div class="subhead"><h3>资料里的 Anker 案例</h3></div><div class="card fade"><h4>从供应链能力到品牌价值</h4><p>课件用 Anker 说明：同样是深圳工厂产品，长期品牌化与全球化可以形成完全不同的价值。这里保留的是课件的案例逻辑，不对具体财务数字做外部核验。</p></div><div class="quote fade">AI 能帮企业讲故事，但讲不出企业没有真实做过、真实交付过的故事。品牌的底座仍然是真实事实。</div></div></section>
 
-  <div class="big-quote fade">这次学习最大的变化，不是发现了更多 AI 工具，而是开始把“人做事情的方法”拆成数据、规则、SOP 和智能体，让一次性的个人经验逐渐变成可以复制、执行和持续优化的组织能力。</div>
-</div>
-</section>
+<section class="section" id="action"><div class="container"><div class="section-head"><div><div class="eyebrow">11 / ACTION</div><h2>从资料学习到落地执行</h2></div><div class="section-intro">把四份资料整合后，最稳的落地顺序并不是“一次性全自动”，而是先统一事实和数据，再形成 SOP，再 Agent 化，最后自动化。</div></div><div class="timeline fade"><div class="step"><b>WEEK 1</b><strong>统一数据</strong><p>产品参数、价格、MOQ、认证、案例、竞品、客户聊天等结构化。</p></div><div class="step"><b>WEEK 2</b><strong>沉淀 SOP</strong><p>竞品分析、主图、详情页、客服质检、新品开发形成标准流程。</p></div><div class="step"><b>WEEK 3</b><strong>封装 Agent / Skill</strong><p>把稳定方法做成可重复调用的岗位能力。</p></div><div class="step"><b>WEEK 4+</b><strong>自动化与复测</strong><p>连接数据源、定时任务、反馈结果，持续修正 SOP。</p></div></div><div class="subhead"><h3>优先级：先做高价值、低复杂度</h3></div><div class="grid-2 fade"><div class="card"><span class="tag green">优先</span><h4>立刻能做</h4><ul><li>产品资料结构化</li><li>竞品数据分析</li><li>低 CTR 主图优化</li><li>聊天记录质检</li><li>FAQ / 内容资产统一</li></ul></div><div class="card"><span class="tag gold">第二阶段</span><h4>有数据后再做</h4><ul><li>销售智能体</li><li>新品自动设计工作流</li><li>GEO 内容矩阵</li><li>跨平台内容分发</li><li>多智能体协作</li></ul></div></div><div class="quote fade">这次学习最大的变化，不是发现更多 AI 工具，而是把“人做事情的方法”拆成数据、规则、SOP 和智能体，让一次性的个人经验逐渐变成可以复制、执行和持续优化的组织能力。</div></div></section>
+
+<section class="section" id="refs"><div class="container"><div class="section-head"><div><div class="eyebrow">12 / REFERENCES</div><h2>资料索引</h2></div><div class="section-intro">课程中的方法、讲师案例与本总结的归纳分开处理。</div></div><div class="refs fade"><div class="ref"><strong>资料 A：</strong>《从 AI 生图到飞书无人办公，企业数字化实操全拆解》——AI能力公式、全球客户筛选、图片视频、售后与销售自动化、多智能体。</div><div class="ref"><strong>资料 B：</strong>《破局出海：AI时代 GEO 全域社媒增长指南》——流量入口迁移、三类资产、全域信源、四覆盖、30天闭环、本地化与品牌。</div><div class="ref"><strong>资料 C：</strong>《20260924湾区AI》——结构化、Agent / Plugin / Skill、MCP、自动任务、A-F文件夹、1688竞品分析。</div><div class="ref"><strong>资料 D：</strong>《AccioWork 产品全景解析与实操演练&1688平台 Accio Work 深度应用指南》——AI四阶段、竞品分析、选品、新品、主图点击率、聊天质检、销售智能体。</div><div class="ref"><strong>说明：</strong>课程中的自动下单比例、售后错误率、GEO趋势判断、Anker财务指标等均按原资料表达，本总结未做外部独立核验。</div></div></div></section>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    2026 湾区 AI 学习总结 · 基于所分享课程资料重新归纳整理<br>
-    <span style="opacity:.7">资料中的案例、经营数据与平台能力均按原资料表述，本总结未做外部独立核验。</span>
-  </div>
-</footer>
-
-<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</button>
-
+<footer class="footer"><div class="container">《2026湾区AI学习总结｜完整深度版》<br>基于所分享 4 份学习资料重新整理</div></footer>
+<button class="backtop" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>
-const progress = document.getElementById('progressBar');
-const navLinks = [...document.querySelectorAll('#navLinks a')];
-const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-function onScroll(){
-  const doc = document.documentElement;
-  const max = doc.scrollHeight - innerHeight;
-  progress.style.width = (max ? (scrollY / max * 100) : 0) + '%';
-
-  let current = sections[0]?.id;
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top <= 120) current = sec.id;
-  });
-  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-}
-addEventListener('scroll', onScroll, {passive:true});
-onScroll();
-
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-},{threshold:.12});
-document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const bar=document.getElementById('bar'),links=[...document.querySelectorAll('#nav a')],sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function sync(){const d=document.documentElement,max=d.scrollHeight-innerHeight;bar.style.width=(max?scrollY/max*100:0)+'%';let cur=sections[0]?.id;sections.forEach(s=>{if(s.getBoundingClientRect().top<=120)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))}
+addEventListener('scroll',sync,{passive:true});sync();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.1});document.querySelectorAll('.fade').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
